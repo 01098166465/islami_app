@@ -21,6 +21,7 @@ class IslamiApp extends StatelessWidget {
       initialRoute: IntroScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
+        SuraDetailsScreen.routrName: (context) => SuraDetailsScreen(),
 
         IntroScreen.routeName: (context) => IntroScreen(),
       },
