@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/nav_bar_selected_icon.dart';
 import 'package:islami_app/nav_bar_unselected_icon.dart';
-import 'package:islami_app/tabs/hades.dart';
+import 'package:islami_app/tabs/hadeth.dart';
 import 'package:islami_app/tabs/quran.dart';
 import 'package:islami_app/tabs/sabaha.dart';
 import 'package:islami_app/tabs/time.dart';
@@ -17,12 +17,45 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
 
-  List<Widget> tads = [Quran(), Hades(), Sabaha(), Radiotab(), Time()];
+  List<Widget> tads = [
+    QuranTab(),
+    HadethTab(),
+    SebhaTab(),
+    RadioTab(),
+    TimeTab(),
+  ];
+  List<String> backgroundImageName = [
+    "quran_background",
+    "hadeth_background",
+    "sebha_background",
+    "radio_background",
+    "time_background",
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tads[currentIndex],
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/${backgroundImageName[currentIndex]}.png",
+            ),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/images/header.png",
+              height: MediaQuery.sizeOf(context).height * 0.15,
+              fit: BoxFit.fitWidth,
+            ),
+            tads[currentIndex],
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           if (currentIndex == index) return;

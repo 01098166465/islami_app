@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SebhaTab extends StatelessWidget {
+class HadethTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Sabaha")));
+    return Scaffold();
   }
 }
