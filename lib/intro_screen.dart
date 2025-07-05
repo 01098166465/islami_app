@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/app_theme.dart';
 import 'home_screen.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -42,8 +43,11 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.sizeOf(context).width;
+    double screenheight = MediaQuery.sizeOf(context).height;
+    TextTheme textThem = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppTheme.black,
       body: PageView.builder(
         controller: _controller,
         itemCount: pages.length,
@@ -59,51 +63,32 @@ class _IntroScreenState extends State<IntroScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                Image.asset("assets/images/header.png", height: 80),
+                Image.asset(
+                  "assets/images/header.png",
+                  width: screenWidth * 0.8,
+                ),
 
-                const SizedBox(height: 20),
                 Spacer(),
-                Image.asset(pages[index]["image"]!, height: 200),
+                Image.asset(pages[index]["image"]!, height: screenheight * 0.4),
 
-                const SizedBox(height: 40),
                 Spacer(),
                 Text(
                   pages[index]["title"]!,
-                  style: TextStyle(fontSize: 22, color: Colors.white),
+                  style: textThem.headlineSmall!.copyWith(
+                    color: AppTheme.primay,
+                  ),
                   textAlign: TextAlign.center,
                 ),
 
-                const SizedBox(height: 12),
                 Spacer(),
                 Text(
                   pages[index]["desc"]!,
-                  style: TextStyle(fontSize: 14, color: Colors.amberAccent),
+                  style: textThem.titleSmall!.copyWith(color: AppTheme.primay),
                   textAlign: TextAlign.center,
                 ),
                 Spacer(),
-                const SizedBox(height: 50),
 
-                // ✅ Dots Indicators
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    pages.length,
-                    (dotIndex) => Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4),
-                      width: currentIndex == dotIndex ? 12 : 6,
-                      height: 6,
-                      decoration: BoxDecoration(
-                        color: currentIndex == dotIndex
-                            ? Colors.amber
-                            : Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 40),
-
+                //const SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -115,12 +100,28 @@ class _IntroScreenState extends State<IntroScreen> {
                                 curve: Curves.ease,
                               );
                             },
-                            child: Text(
-                              "Back",
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            child: Text("Back", style: textThem.titleMedium),
                           )
                         : SizedBox(width: 60),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: List.generate(
+                        pages.length,
+                        (dotIndex) => Container(
+                          margin: EdgeInsets.symmetric(horizontal: 4),
+                          width: currentIndex == dotIndex ? 12 : 6,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: currentIndex == dotIndex
+                                ? AppTheme.primay
+                                : Color(0xff707070),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
                     TextButton(
                       onPressed: () {
                         if (index == pages.length - 1) {
@@ -138,7 +139,9 @@ class _IntroScreenState extends State<IntroScreen> {
                       },
                       child: Text(
                         index == pages.length - 1 ? "Finish" : "Next",
-                        style: TextStyle(color: Colors.amber),
+                        style: textThem.titleMedium!.copyWith(
+                          color: AppTheme.primay,
+                        ),
                       ),
                     ),
                   ],
