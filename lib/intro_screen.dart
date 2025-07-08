@@ -29,7 +29,7 @@ class _IntroScreenState extends State<IntroScreen> {
       "image": "assets/images/intro3.png",
     },
     {
-      "title": "Besm Allah",
+      "title": "Bearish",
       "desc": "Praise the name of your Lord, the Most High",
       "image": "assets/images/intro4.png",
     },
@@ -43,9 +43,6 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.sizeOf(context).width;
-    double screenheight = MediaQuery.sizeOf(context).height;
-    TextTheme textThem = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: AppTheme.black,
       body: PageView.builder(
@@ -57,6 +54,9 @@ class _IntroScreenState extends State<IntroScreen> {
           });
         },
         itemBuilder: (context, index) {
+          TextTheme textThem = Theme.of(context).textTheme;
+          double screenHeight = MediaQuery.sizeOf(context).height;
+          double screenWidth = MediaQuery.sizeOf(context).width;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -65,12 +65,14 @@ class _IntroScreenState extends State<IntroScreen> {
                 Spacer(),
                 Image.asset(
                   "assets/images/header.png",
-                  width: screenWidth * 0.8,
+                  width: screenWidth * 0.9,
                 ),
-
                 Spacer(),
-                Image.asset(pages[index]["image"]!, height: screenheight * 0.4),
-
+                Image.asset(
+                  pages[index]["image"]!,
+                  height: screenHeight * 0.5,
+                  width: double.infinity,
+                ),
                 Spacer(),
                 Text(
                   pages[index]["title"]!,
@@ -79,16 +81,13 @@ class _IntroScreenState extends State<IntroScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-
-                Spacer(),
+                SizedBox(height: 40),
                 Text(
                   pages[index]["desc"]!,
-                  style: textThem.titleSmall!.copyWith(color: AppTheme.primay),
+                  style: textThem.titleMedium!.copyWith(color: AppTheme.primay),
                   textAlign: TextAlign.center,
                 ),
                 Spacer(),
-
-                //const SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -100,13 +99,16 @@ class _IntroScreenState extends State<IntroScreen> {
                                 curve: Curves.ease,
                               );
                             },
-                            child: Text("Back", style: textThem.titleMedium),
+                            child: Text(
+                              "Back",
+                              style: textThem.titleMedium!.copyWith(
+                                color: AppTheme.primay,
+                              ),
+                            ),
                           )
                         : SizedBox(width: 60),
 
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-
                       children: List.generate(
                         pages.length,
                         (dotIndex) => Container(

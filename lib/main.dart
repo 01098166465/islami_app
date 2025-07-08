@@ -22,7 +22,6 @@ class IslamiApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         SuraDetailsScreen.routrName: (context) => SuraDetailsScreen(),
-
         IntroScreen.routeName: (context) => IntroScreen(),
       },
       theme: AppTheme.lightThem,
