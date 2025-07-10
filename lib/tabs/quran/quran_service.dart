@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:islami_app/tabs/quran/sura.dart';
 
 class QuranService {
@@ -360,4 +361,6 @@ class QuranService {
     englishSuraNames: englishSuraNames[index],
     num: index + 1,
   );
+  static Future<String> loadSuraFile(int suraNum) =>
+      rootBundle.loadString("assets/text/$suraNum.txt");
 }

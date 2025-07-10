@@ -9,6 +9,7 @@ class QuranTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.sizeOf(context).width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,13 +20,18 @@ class QuranTab extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
+
         Expanded(
           child: ListView.separated(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            itemBuilder: (_, index) {
-              Sura sura = QuranService.suras[index];
+            itemCount: QuranService.suras.length,
+            itemBuilder: (context, index) {
+              final Sura sura = QuranService.suras[index];
               return InkWell(
                 onTap: () {
+                  debugPrint(
+                    "Tapped on sura ${sura.num}: ${sura.englishSuraNames}",
+                  );
                   Navigator.pushNamed(
                     context,
                     SuraDetailsScreen.routrName,
@@ -35,8 +41,6 @@ class QuranTab extends StatelessWidget {
                 child: SuraItem(sura),
               );
             },
-            itemCount: QuranService.suras.length,
-
             separatorBuilder: (context, index) => Divider(
               thickness: 1,
               color: AppTheme.white,
