@@ -7,7 +7,7 @@ import 'package:islami_app/tabs/quran/sura.dart';
 import 'package:islami_app/widgets/loading_indecator.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
-  static const String routrName = "sura-details";
+  static const String routeName = "sura-details";
 
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
