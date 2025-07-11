@@ -3,12 +3,13 @@ import 'package:islami_app/app_theme.dart';
 import 'package:islami_app/home_screen.dart';
 
 import 'package:islami_app/intro_screen.dart';
+import 'package:islami_app/tabs/quran/quran_service.dart';
 
 import 'package:islami_app/tabs/quran/sura_details_screen.dart';
 
-import 'package:islami_app/intro_screen.dart';
-
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await QuranService.getMostRecentlySuras();
   runApp(IslamiApp());
 }
 
@@ -22,6 +23,7 @@ class IslamiApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         SuraDetailsScreen.routrName: (context) => SuraDetailsScreen(),
+
         IntroScreen.routeName: (context) => IntroScreen(),
       },
       theme: AppTheme.lightThem,
