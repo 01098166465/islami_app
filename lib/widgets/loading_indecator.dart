@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/app_theme.dart';
+import 'package:islami_app/widgets/app_theme.dart';
 
 class LoadingIndecator extends StatelessWidget {
   Color? color;

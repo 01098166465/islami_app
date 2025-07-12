@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islami_app/app_theme.dart';
+import 'package:islami_app/widgets/app_theme.dart';
 import 'package:islami_app/tabs/quran/most_recently_section.dart';
 import 'package:islami_app/tabs/quran/quran_service.dart';
 import 'package:islami_app/tabs/quran/sura.dart';

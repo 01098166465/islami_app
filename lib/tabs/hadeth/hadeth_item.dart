@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/app_theme.dart';
+import 'package:islami_app/widgets/app_theme.dart';
 import 'package:islami_app/tabs/hadeth/hadeth1.dart';
 import 'package:islami_app/tabs/hadeth/hadeth_details_screen.dart';
 import 'package:islami_app/widgets/loading_indecator.dart';

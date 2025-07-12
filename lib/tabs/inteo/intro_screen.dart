@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/app_theme.dart';
-import 'home_screen.dart';
+import 'package:islami_app/widgets/app_theme.dart';
+import '../../home/home_screen.dart';
 
 class IntroScreen extends StatefulWidget {
   static const String routeName = "intro_screen";
