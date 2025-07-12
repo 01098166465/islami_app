@@ -3,6 +3,7 @@ import 'package:islami_app/app_theme.dart';
 import 'package:islami_app/home_screen.dart';
 
 import 'package:islami_app/intro_screen.dart';
+import 'package:islami_app/tabs/hadeth/hadeth_details_screen.dart';
 import 'package:islami_app/tabs/quran/quran_service.dart';
 
 import 'package:islami_app/tabs/quran/sura_details_screen.dart';
@@ -22,8 +23,8 @@ class IslamiApp extends StatelessWidget {
       initialRoute: IntroScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
-        SuraDetailsScreen.routrName: (context) => SuraDetailsScreen(),
-
+        SuraDetailsScreen.routeName: (context) => SuraDetailsScreen(),
+        HadethDetailsScreen.routeName: (context) => HadethDetailsScreen(),
         IntroScreen.routeName: (context) => IntroScreen(),
       },
       theme: AppTheme.lightThem,
