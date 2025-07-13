@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/tabs/quran/sura.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,115 +1,179 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/widgets/app_theme.dart';
 
 class TimeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Column(
         children: [
-          // ✅ Container مواقيت الصلاة
           Container(
-            height: 250,
-            margin: EdgeInsets.all(16),
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+            height: MediaQuery.of(context).size.height * 0.35,
+            margin: EdgeInsets.all(15),
+            padding: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
-              color: Color(0xFFF0C77A),
-              borderRadius: BorderRadius.circular(24),
+              color: AppTheme.primay,
+              borderRadius: BorderRadius.circular(30),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // التاريخ واليوم
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("16 Jul, 2024", style: TextStyle(fontSize: 14)),
+                    Text(
+                      "16 Jul,\n 2024",
+                      textAlign: TextAlign.start,
+                      style: textTheme.titleMedium,
+                    ),
                     Text(
                       "Pray Time",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                      style: textTheme.titleLarge!.copyWith(
+                        color: Color(0xff856B3F),
                       ),
                     ),
-                    Text("09 Muh, 1446", style: TextStyle(fontSize: 14)),
+                    Text("09 Muh,\n 1446", style: textTheme.titleMedium),
                   ],
                 ),
-                SizedBox(height: 4),
+
                 Text(
                   "Tuesday",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: textTheme.titleLarge!.copyWith(color: AppTheme.black),
                 ),
-
-                SizedBox(height: 12),
-
-                // ✅ Scroll أفقي للكروت
+                SizedBox(height: 10),
                 Container(
-                  height: 80,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
                         SizedBox(width: 8),
-                        _buildPrayerCard("Fajr", "04:04 AM"),
+                        _buildPrayerCard("Fajr", "04:04 ", "AM"),
                         SizedBox(width: 8),
-                        _buildPrayerCard("Dhuhr", "01:01 PM"),
+                        _buildPrayerCard("Dhuhr", "01:01 ", "PM"),
                         SizedBox(width: 8),
-                        _buildPrayerCard("ASR", "04:38 PM", isActive: true),
+                        _buildPrayerCard("ASR", "04:38 ", "PM"),
                         SizedBox(width: 8),
-                        _buildPrayerCard("Maghrib", "07:57 PM"),
+                        _buildPrayerCard("Maghrib", "07:57 ", "PM"),
                         SizedBox(width: 8),
-                        _buildPrayerCard("Isha", "09:11 PM"),
+                        _buildPrayerCard("Isha", "09:11 ", "PM"),
                         SizedBox(width: 8),
                       ],
                     ),
                   ),
                 ),
 
-                SizedBox(height: 12),
-
-                // الوقت المتبقي وأيقونة الصوت
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Next Pray - 02:32", style: TextStyle(fontSize: 14)),
-                    Icon(Icons.volume_off, size: 18),
+                    Text(
+                      "Next Pray${"- 02:32"}",
+                      style: textTheme.titleMedium!.copyWith(
+                        color: Color(0xff202020).withValues(alpha: 0.75),
+                      ),
+                    ),
+
+                    Icon(Icons.volume_off, size: 25),
                   ],
                 ),
               ],
             ),
           ),
 
-          // ✅ محتوى إضافي تقدر تضيفه هنا
-          Text("Azkar", style: TextStyle(color: Colors.white)),
+          Row(
+            children: [
+              SizedBox(width: 15),
+
+              Text(
+                "Azkar",
+                textAlign: TextAlign.start,
+                style: textTheme.titleMedium,
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  decoration: BoxDecoration(
+                    color: AppTheme.black.withValues(alpha: 0.7),
+                    border: Border.all(color: AppTheme.primay, width: 1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset("assets/images/bell_time_icon.png"),
+                      Text("Evening Azkar", style: textTheme.titleLarge),
+                    ],
+                  ),
+                ),
+
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  decoration: BoxDecoration(
+                    color: AppTheme.black.withValues(alpha: 0.7),
+                    border: Border.all(color: AppTheme.primay, width: 1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset("assets/images/radio_icon2.png"),
+                      Text("Morning Azkar", style: textTheme.titleLarge),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 
-  // ✅ كروت الصلاة
-  Widget _buildPrayerCard(String title, String time, {bool isActive = false}) {
+  Widget _buildPrayerCard(String title, String time, String period) {
     return Container(
-      width: 70,
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: isActive ? Colors.black : Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        gradient: LinearGradient(
+          colors: [AppTheme.black, Color(0xffB19768)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomLeft,
+        ),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+
         children: [
           Text(
             title,
             style: TextStyle(
-              color: isActive ? Colors.white70 : Colors.black87,
-              fontSize: 12,
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(height: 4),
           Text(
             time,
             style: TextStyle(
-              color: isActive ? Colors.white : Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 13,
+              fontSize: 32,
+            ),
+          ),
+          Text(
+            period,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

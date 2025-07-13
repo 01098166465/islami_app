@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/tabs/quran/most_recently_item.dart';
 import 'package:islami_app/tabs/quran/quran_service.dart';
-import 'package:islami_app/tabs/quran/sura.dart';
 
 class MostRecentlySection extends StatelessWidget {
   @override
