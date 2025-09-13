@@ -9,6 +9,7 @@ class HadethTab extends StatelessWidget {
       padding: const EdgeInsets.only(top: 12, bottom: 20),
       child: CarouselSlider.builder(
         options: CarouselOptions(
+          autoPlay: true,
           height: double.infinity,
           enlargeCenterPage: true,
           enlargeFactor: 0.2,
